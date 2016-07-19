@@ -267,14 +267,14 @@ def MakeStatProgression(myHisto,histDwSys={},histUpSys={},
             if( y > 0 ):
                 up_errsum2   = (stat/y)*(stat/y) 
                 down_errsum2 = (stat/y)*(stat/y) 
-            for sys in histUpSys:
-                up_diff   = (histUpSys[sys].GetBinContent(ibin) - y) / y 
-                if( up_diff > 0 ):
-                    up_errsum2   += up_diff*up_diff 
-            for sys in histDwSys:
-                down_diff = (histDwSys[sys].GetBinContent(ibin) - y) / y 
-                if( down_diff < 0 ):
-                    down_errsum2 += down_diff*down_diff 
+                for sys in histUpSys:
+                    up_diff   = (histUpSys[sys].GetBinContent(ibin) - y) / y 
+                    if( up_diff > 0 ):
+                        up_errsum2   += up_diff*up_diff 
+                for sys in histDwSys:
+                    down_diff = (histDwSys[sys].GetBinContent(ibin) - y) / y 
+                    if( down_diff < 0 ):
+                        down_errsum2 += down_diff*down_diff 
             
             up_error   = math.sqrt(up_errsum2)  
             down_error = math.sqrt(down_errsum2)  
