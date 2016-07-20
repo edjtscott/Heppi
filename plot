@@ -114,10 +114,10 @@ if __name__ == "__main__":
             'red', attrs=['bold']
         ))
         for var in heppi.variables:
-            heppi.draw_instack(var,heppi.options.label,heppi.selection['title'])
+            heppi.draw_instack(var,heppi.options.label,heppi.selection['title']+heppi.options.addedcuts)
     else:
         if opt.variable != '':
-            heppi.draw_instack(opt.variable,heppi.options.label,heppi.selection['title'])
+            heppi.draw_instack(opt.variable,heppi.options.label,heppi.selection['title']+heppi.options.addedcuts)
             if opt.display:
                 raw_input('... Press any key to exit ...')
         else:

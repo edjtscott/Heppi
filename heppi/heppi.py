@@ -125,7 +125,7 @@ def read_plotcard(plotcard, cut_card=''):
     logger.info(' ------------------------------')
     
 # ---- create a cut flow except the considered variables
-def variable_cutflow(variable, select='', addedcuts=''):
+def variable_cutflow(variable, select=''):
     cutflow = ''
     for var in variables:
         if (len(variables[var].get('cut',''))!= 0) and (var!=variable):
@@ -135,8 +135,6 @@ def variable_cutflow(variable, select='', addedcuts=''):
     if select != '':
         cutflow = cutflow + '&&' + select
 
-    if addedcuts != '':
-        cutflow = cutflow + '&&' + addedcuts
     return cutflow
 #---------------------------------------------------------
 def print_cutflow():
@@ -576,12 +574,7 @@ def draw_instack(variable, label='VBF', select=''):
                                (1 - ROOT.gStyle.GetPadRightMargin()),
                                (0.96 - ROOT.gStyle.GetPadTopMargin()))
 
-    cutflow = variable_cutflow(variable,'')
-    #cutflow = variable_cutflow(variable,'',addedcuts)
-    # what is the purpose of the if statement below?
-    if len(cutflow)!=0:
-        #cutflow = variable_cutflow(variable,select)
-        cutflow = variable_cutflow(variable,select,addedcuts)
+    cutflow = variable_cutflow(variable,select)
 
     hstack = ROOT.THStack('hs_' + varname,'')
     
