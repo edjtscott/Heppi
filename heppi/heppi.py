@@ -247,8 +247,8 @@ def MakeStatProgression(myHisto,histDwSys={},histUpSys={},
     systPrecision.SetFillStyle(settings.ratio_syst_band_style)
     systPrecision.SetMarkerColorAlpha(0,0)
     
-    if len(histUpSys)==0 or len(histDwSys)==0 :
-        systematic_only = False
+    #if len(histUpSys)==0 or len(histDwSys)==0 :
+    #    systematic_only = False
     if systematic_only:
         for ibin in range(myHisto.GetNbinsX()+1):
             y    = statPrecision.GetBinContent(ibin);

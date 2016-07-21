@@ -98,8 +98,8 @@
         },
         "jetEta": {
             "hist"  : "(100,-5,5)",
-            //"cut"  : "",
-            "cut"   : "abs(jetEta)>2.5 ",
+            "cut"  : "",
+            //"cut"   : "abs(jetEta)>2.5 ",
             //"cut"  : "abs(jetEta)>2.5 && abs(jetEta)<2.75",
             //"cut"  : "abs(jetEta)>2.75 && abs(jetEta)<3.0",
             //"cut"  : "abs(jetEta)>3.0 ",
@@ -220,10 +220,11 @@
         },
         "deltaPhiZJet": {
             "hist": "(100,-3.2,3.2)",
-            "cut": "abs(deltaPhiZJet)>2.5",
             //"cut"  : "",
+            "cut": "abs(deltaPhiZJet)>2.5",
             "blind": "",
             "log": true,
+            //"log": false,
             "norm": false,
             "title": "deltaPhiZJet"
         },
@@ -343,7 +344,7 @@
 	    "80X-DoubleEG",
 	    "Z + 1 jet",
 	    "70 < m_{#gamma#gamma} < 110 GeV",
-	    "|#eta_{jet}| > 2.5",
+	    //"|#eta_{jet}| > 2.5",
             //"20 < p_{T} < 30",
 	    "JEC, JER and RMS",
 	    "systematics included",
@@ -353,20 +354,8 @@
     "tree": {
 	"name": "ZPlusJetTagDumper/trees/*_13TeV_ZPlusJet",
 	//"kfactor":0.261,
-	"kfactor":0.3436,
+	//"kfactor":0.3436,
+	//"kfactor":0.3591,
 	"lumi"   : 6.26
     }
-    /*"options": {
-        "label": [
-            "CMSSW-80x",
-            //"",
-            "70 < m_{ee} < 110 GeV",
-            "|#eta_{jet}| < 2.5",
-            "20 < p_{T} < 30"
-        ],
-        "treename": "ZPlusJetTagDumper/trees/{sampleid}_13TeV_ZPlusJet",
-        "intlumi": 6.26,
-	"kfactor": 0
-        //"ratio_range": [0, 2.1]
-    }*/
 }

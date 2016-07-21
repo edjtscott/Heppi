@@ -85,6 +85,7 @@
 	"dijet_leadEta": {
 	    "hist": "(50,-5,5)",
 	    "cut": "",
+	    //"cut": "abs(dijet_leadEta)<2.5",
 	    //"cut": "abs(dijet_leadEta)>2.5",
 	    "blind": "",
 	    "log": false,
@@ -93,8 +94,9 @@
 	},
 	"dijet_subleadEta": {
 	    "hist": "(50,-5,5)",
-	    //"cut": "",
-	    "cut": "abs(dijet_subleadEta)<2.5",
+	    "cut": "",
+	    //"cut": "abs(dijet_subleadEta)<2.5",
+	    //"cut": "abs(dijet_subleadEta)>2.5",
 	    "blind": "",
 	    "log": false,
 	    "norm": false,
@@ -282,6 +284,7 @@
 	    "name": "DY",
 	    "title": "Drell-Yan",
 	    "tree" : "Zee",
+	    "weight"  : "(upweight*downweight)",
 	    "label": "spectator"
 	    //"label": "background"
 	},
@@ -345,16 +348,19 @@
 	"name": "vbfTagDumper/trees/*_13TeV_VBFDiJet",
 	//"kfactor": 0.8152,
 	//"kfactor": 0.8205,
-	"kfactor": 0.827155,
+	//"kfactor": 0.827155,
+	"kfactor": 0.861875,
 	"lumi": 6.26
     },
     "systematics": {
 	"UpTrees": [
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_PUUp01sigma",
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERUp01sigma",
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JECUp01sigma",
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftUp01sigma"
 	],
 	"DwTrees": [
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_PUDown01sigma",
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERDown01sigma",
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JECDown01sigma",
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftDown01sigma"
@@ -374,15 +380,16 @@
 	    "CMSSW-80x",
 	    "70 < m_{ee} < 110 GeV",
 	    //"m_{jj} > 250 GeV",
-	    "Sublead jet in barrel",
+	    //"Lead jet in barrel",
+	    //"Lead jet in endcap",
+	    //"Sublead jet in barrel",
 	    //"Sublead jet in endcap",
-	    //"No fudge factor",
-	    //"Correction factor",
-            //"of 0.827 applied",
-	    "JEC, JER and RMS",
+	    //"JEC, JER and RMS",
+	    "JEC, JER, RMS and PU",
 	    "systematics included",
 	    //"Statistical errors only",
 	    //"JEC systematic only",
+	    //"PU systematic only",
 	    ""
 	]
     }
