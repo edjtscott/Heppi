@@ -134,7 +134,6 @@ def variable_cutflow(variable, select=''):
             
     if select != '':
         cutflow = cutflow + '&&' + select
-
     return cutflow
 #---------------------------------------------------------
 def print_cutflow():
@@ -495,15 +494,16 @@ def book_trees(select = ''):
             if proc != 'Data' and samples[proc].get('dosysts',True):
                 for sys in treesUpSys:
                     print "debug::(",proc,")", sys, " == ", samples[proc].get('label')
+                    #normally want treename rather than proc name for syst trees
                     #chainUp = ROOT.TChain(sys.replace('*',proc))
-                    chainUp = ROOT.TChain(sys.replace('*',samples[proc].get('tree'))) # Ed
+                    chainUp = ROOT.TChain(sys.replace('*',samples[proc].get('tree')))
                     for sam in samples[proc].get('name',[]):
                         for f in glob.glob( sampledir + '/*'+ sam +'*.root'):
                             chainUp.Add(f)
                         chainSysUp.append(chainUp)
                 for sys in treesDwSys:
                     #chainDw = ROOT.TChain(sys.replace('*',proc))
-                    chainDw = ROOT.TChain(sys.replace('*',samples[proc].get('tree'))) # Ed
+                    chainDw = ROOT.TChain(sys.replace('*',samples[proc].get('tree')))
                     for sam in samples[proc].get('name',[]):
                         for f in glob.glob( sampledir + '/*'+ sam +'*.root'):
                             chainDw.Add(f)
@@ -521,13 +521,13 @@ def book_trees(select = ''):
             if samples[proc].get('label') != 'Data':
                 for sys in treesUpSys:
                     #chainUp = ROOT.TChain(sys.replace('*',proc))
-                    chainUp = ROOT.TChain(sys.replace('*',samples[proc].get('tree'))) # Ed
+                    chainUp = ROOT.TChain(sys.replace('*',samples[proc].get('tree')))
                     for f in glob.glob( sampledir + '/*'+ sam +'*.root'):
                         chainUp.Add(f)
                     chainSysUp.append(chainUp)
                 for sys in treesDwSys:
                     #chainDw = ROOT.TChain(sys.replace('*',proc))
-                    chainDw = ROOT.TChain(sys.replace('*',samples[proc].get('tree'))) # Ed
+                    chainDw = ROOT.TChain(sys.replace('*',samples[proc].get('tree')))
                     for f in glob.glob( sampledir + '/*'+ sam +'*.root'):
                         chainDw.Add(f)
                     chainSysDw.append(chainDw)
