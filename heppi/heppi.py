@@ -692,7 +692,8 @@ def draw_instack(variable, label='VBF', select=''):
                     histDwSys[sysname].Add(histDw)
         # ======= weight systematics
         for sys in branchUpSys:
-            if proc != 'Data' and 'signal' != samples[proc].get('label',''):
+            #if proc != 'Data' and 'signal' != samples[proc].get('label',''):
+            if proc == 'Zee': # Ed
                 print 'sys ::', sys, ' :: treeUp ::', tree, ' :: ', tree.GetEntries(), ' :: ', 'weight*%f*%f*%s*%f' % ( treeinfo.get('kfactor',1.0),
                                                                                                                         treeinfo.get('lumi'   ,1.0),
                                                                                                                         sys,
@@ -713,7 +714,8 @@ def draw_instack(variable, label='VBF', select=''):
                     histUpSys[sys].Add(histUp)
 
         for sys in branchDwSys:
-            if proc != 'Data' and 'signal' != samples[proc].get('label',''):
+            #if proc != 'Data' and 'signal' != samples[proc].get('label',''):
+            if proc == 'Zee': # Ed
                 print 'sys ::', sys, ' :: treeUp ::', tree, ' :: ', tree.GetEntries(), ' :: ', 'weight*%f*%f*%s*%f' % ( treeinfo.get('kfactor',1.0),
                                                                                                                         treeinfo.get('lumi'   ,1.0),
                                                                                                                         sys,

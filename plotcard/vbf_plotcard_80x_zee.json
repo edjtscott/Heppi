@@ -93,8 +93,8 @@
 	},
 	"dijet_subleadEta": {
 	    "hist": "(50,-5,5)",
-	    //"cut": "",
-	    "cut": "abs(dijet_subleadEta)<2.5",
+	    "cut": "",
+	    //"cut": "abs(dijet_subleadEta)<2.5",
 	    "blind": "",
 	    "log": false,
 	    "norm": false,
@@ -281,7 +281,8 @@
 	    "order": 1,
 	    "name": "DY",
 	    "title": "Drell-Yan",
-	    "tree" : "Zee",
+	    //"tree" : "Zee",
+	    "tree" : "Filtered",
 	    "label": "spectator"
 	    //"label": "background"
 	},
@@ -290,7 +291,8 @@
 	    "order": 1,
 	    "name" : "DY",
 	    "title": "both matched",
-	    "tree" : "Zee",
+	    //"tree" : "Zee",
+	    "tree" : "Filtered",
 	    "cut"  : "(dijet_jet1_match==1 && dijet_jet2_match==1)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -300,7 +302,8 @@
 	    "order": 2,
 	    "name" : "DY",
 	    "title": "both fake",
-	    "tree" : "Zee",
+	    //"tree" : "Zee",
+	    "tree" : "Filtered",
 	    "cut"  : "(dijet_jet1_match==0 && dijet_jet2_match==0)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -310,7 +313,8 @@
 	    "order": 3,
 	    "name": "DY",
 	    "title": "jet_{1} fake",
-	    "tree": "Zee",
+	    //"tree": "Zee",
+	    "tree" : "Filtered",
 	    "cut": "(dijet_jet1_match==0 && dijet_jet2_match==1)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -320,7 +324,8 @@
 	    "order": 4,
 	    "name": "DY",
 	    "title": "jet_{2} fake",
-	    "tree": "Zee",
+	    //"tree": "Zee",
+	    "tree" : "Filtered",
 	    "cut": "(dijet_jet1_match==1 && dijet_jet2_match==0)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -345,19 +350,34 @@
 	"name": "vbfTagDumper/trees/*_13TeV_VBFDiJet",
 	//"kfactor": 0.8152,
 	//"kfactor": 0.8205,
-	"kfactor": 0.827155,
+	//"kfactor": 0.827155,
+	"kfactor": 0.8670565,
 	"lumi": 6.26
     },
     "systematics": {
 	"UpTrees": [
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERUp01sigma",
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JECUp01sigma",
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftUp01sigma"
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERUp01sigma"
+	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECUp01sigma",
+	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftUp01sigma"
 	],
 	"DwTrees": [
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERDown01sigma",
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JECDown01sigma",
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftDown01sigma"
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERDown01sigma"
+	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECDown01sigma",
+	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftDown01sigma"
+	],
+	"UpBranch": [
+	    //"UnmatchedPUWeightUp01sigma/centralObjectWeight"
+            //"alphaUp",
+            //"scaleUp_0",
+            //"scaleUp_1"
+            //"scaleUp_2"
+	],
+	"DwBranch": [
+	    //"UnmatchedPUWeightDown01sigma/centralObjectWeight"
+            //"alphaDown",
+            //"scaleDown_0",
+            //"scaleDown_1"
+            //"scaleDown_2"
 	]
     },
     "options": {
@@ -374,12 +394,15 @@
 	    "CMSSW-80x",
 	    "70 < m_{ee} < 110 GeV",
 	    //"m_{jj} > 250 GeV",
-	    "Sublead jet in barrel",
+	    //"Sublead jet in barrel",
 	    //"Sublead jet in endcap",
 	    //"No fudge factor",
 	    //"Correction factor",
             //"of 0.827 applied",
-	    "JEC, JER and RMS",
+	    //"JEC, JER and RMS",
+	    //"JEC, JER, RMS, PU",
+	    //"Alpha and Scale0-2",
+	    "Scale1 only",
 	    "systematics included",
 	    //"Statistical errors only",
 	    //"JEC systematic only",
