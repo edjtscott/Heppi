@@ -357,26 +357,26 @@
     "systematics": {
 	"UpTrees": [
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERUp01sigma"
-	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECUp01sigma",
+	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECUp01sigma"
 	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftUp01sigma"
 	],
 	"DwTrees": [
 	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERDown01sigma"
-	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECDown01sigma",
+	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECDown01sigma"
 	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftDown01sigma"
 	],
 	"UpBranch": [
 	    //"UnmatchedPUWeightUp01sigma/centralObjectWeight"
             //"alphaUp",
             //"scaleUp_0",
-            //"scaleUp_1"
+            "scaleUp_1"
             //"scaleUp_2"
 	],
 	"DwBranch": [
 	    //"UnmatchedPUWeightDown01sigma/centralObjectWeight"
             //"alphaDown",
             //"scaleDown_0",
-            //"scaleDown_1"
+            "scaleDown_1"
             //"scaleDown_2"
 	]
     },
@@ -402,7 +402,7 @@
 	    //"JEC, JER and RMS",
 	    //"JEC, JER, RMS, PU",
 	    //"Alpha and Scale0-2",
-	    "Scale1 only",
+	    "JER only",
 	    "systematics included",
 	    //"Statistical errors only",
 	    //"JEC systematic only",

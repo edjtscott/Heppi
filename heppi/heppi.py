@@ -264,17 +264,37 @@ def MakeStatProgression(myHisto,histDwSys={},histUpSys={},
 
             up_errsum2   = 0
             down_errsum2 = 0
+
             if( y > 0 ):
                 up_errsum2   = (stat/y)*(stat/y) 
                 down_errsum2 = (stat/y)*(stat/y) 
+
+                upvals   = []
+                downvals = []
                 for sys in histUpSys:
-                    up_diff   = (histUpSys[sys].GetBinContent(ibin) - y) / y 
+                    upvals.append( histUpSys[sys].GetBinContent(ibin) )
+                for sys in histDwSys:
+                    downvals.append( histDwSys[sys].GetBinContent(ibin) )
+
+                greater = 1.
+                lesser  = 1.
+
+                for i in range( len(upvals) ) :
+                    if upvals[i] > downvals[i]:
+                        greater = upvals[i]
+                        lesser  = downvals[i]
+                    else:
+                        lesser  = upvals[i]
+                        greater = downvals[i]
+                    #up_diff   = (histUpSys[sys].GetBinContent(ibin) - y) / y 
+                    up_diff   = (greater - y) / y 
                     if( up_diff > 0 ):
                         up_errsum2   += up_diff*up_diff 
-                for sys in histDwSys:
-                    down_diff = (histDwSys[sys].GetBinContent(ibin) - y) / y 
+                    #down_diff = (histDwSys[sys].GetBinContent(ibin) - y) / y 
+                    down_diff   = (lesser - y) / y 
                     if( down_diff < 0 ):
                         down_errsum2 += down_diff*down_diff 
+
             up_error   = math.sqrt(up_errsum2)  
             down_error = math.sqrt(down_errsum2)  
             band_max   = 1 + up_error 
@@ -310,12 +330,30 @@ def drawStatErrorBand(myHisto,histDwSys={},histUpSys={},systematic_only=True, co
 
             up_errsum2   = stat*stat 
             down_errsum2 = stat*stat 
+
+            upvals   = []
+            downvals = []
             for sys in histUpSys:
-                up_diff   = histUpSys[sys].GetBinContent(ibin) - y 
+                upvals.append( histUpSys[sys].GetBinContent(ibin) )
+            for sys in histDwSys:
+                downvals.append( histDwSys[sys].GetBinContent(ibin) )
+
+            greater = 1.
+            lesser  = 1.
+
+            for i in range( len(upvals) ) :
+                if upvals[i] > downvals[i]:
+                    greater = upvals[i]
+                    lesser  = downvals[i]
+                else:
+                    lesser  = upvals[i]
+                    greater = downvals[i]
+                #up_diff   = histUpSys[sys].GetBinContent(ibin) - y 
+                up_diff   = greater - y 
                 if( up_diff > 0   ):
                     up_errsum2   += up_diff*up_diff 
-            for sys in histDwSys:
-                down_diff = histDwSys[sys].GetBinContent(ibin) - y 
+                #down_diff = histDwSys[sys].GetBinContent(ibin) - y 
+                down_diff   = lesser - y 
                 if( down_diff < 0 ):
                     down_errsum2 += down_diff*down_diff 
             
