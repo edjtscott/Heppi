@@ -34,6 +34,7 @@
 	},
 	"dijet_LeadJPt": {
 	    "hist": "(60,15,265)",
+	    //"cut": "",
 	    "cut": "dijet_LeadJPt>30",
 	    "blind": "",
 	    "log": false,
@@ -59,6 +60,7 @@
 	},
 	"dijet_SubJPt": {
 	    "hist": "(60,15,265)",
+	    //"cut": "",
 	    "cut": "dijet_SubJPt>20",
 	    "blind": "",
 	    "log": false,
@@ -281,8 +283,8 @@
 	    "order": 1,
 	    "name": "DY",
 	    "title": "Drell-Yan",
-	    //"tree" : "Zee",
-	    "tree" : "Filtered",
+	    "tree" : "Zee",
+	    //"tree" : "Filtered",
 	    "label": "spectator"
 	    //"label": "background"
 	},
@@ -291,8 +293,8 @@
 	    "order": 1,
 	    "name" : "DY",
 	    "title": "both matched",
-	    //"tree" : "Zee",
-	    "tree" : "Filtered",
+	    "tree" : "Zee",
+	    //"tree" : "Filtered",
 	    "cut"  : "(dijet_jet1_match==1 && dijet_jet2_match==1)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -302,8 +304,8 @@
 	    "order": 2,
 	    "name" : "DY",
 	    "title": "both fake",
-	    //"tree" : "Zee",
-	    "tree" : "Filtered",
+	    "tree" : "Zee",
+	    //"tree" : "Filtered",
 	    "cut"  : "(dijet_jet1_match==0 && dijet_jet2_match==0)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -313,8 +315,8 @@
 	    "order": 3,
 	    "name": "DY",
 	    "title": "jet_{1} fake",
-	    //"tree": "Zee",
-	    "tree" : "Filtered",
+	    "tree": "Zee",
+	    //"tree" : "Filtered",
 	    "cut": "(dijet_jet1_match==0 && dijet_jet2_match==1)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -324,8 +326,8 @@
 	    "order": 4,
 	    "name": "DY",
 	    "title": "jet_{2} fake",
-	    //"tree": "Zee",
-	    "tree" : "Filtered",
+	    "tree": "Zee",
+	    //"tree" : "Filtered",
 	    "cut": "(dijet_jet1_match==1 && dijet_jet2_match==0)",
 	    //"label": "spectator"
 	    "label": "background"
@@ -336,6 +338,7 @@
 	    "order": 2,
 	    "name": [
 		"DoubleEG"
+		//"SingleElectron"
 	    ],
 	    "cut": "",
 	    "title": "data",
@@ -351,32 +354,37 @@
 	//"kfactor": 0.8152,
 	//"kfactor": 0.8205,
 	//"kfactor": 0.827155,
-	"kfactor": 0.8670565,
-	"lumi": 6.26
+	//"kfactor": 0.8670565,
+	//"kfactor": 0.8670565,
+	//"kfactor": 0.872888,
+	//"kfactor": 0.75238, // se, nvtx
+	"kfactor": 0.74503, // single electron
+	//"lumi": 6.26
+	"lumi": 12.9
     },
     "systematics": {
 	"UpTrees": [
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERUp01sigma"
-	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECUp01sigma"
-	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftUp01sigma"
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERUp01sigma",
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JECUp01sigma",
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftUp01sigma"
 	],
 	"DwTrees": [
-	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERDown01sigma"
-	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_JECDown01sigma"
-	    //"vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftDown01sigma"
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JERDown01sigma",
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_JECDown01sigma",
+	    "vbfTagDumper/trees/*_13TeV_VBFDiJet_RMSShiftDown01sigma"
 	],
 	"UpBranch": [
-	    //"UnmatchedPUWeightUp01sigma/centralObjectWeight"
+	    //"UnmatchedPUWeightUp01sigma/centralObjectWeight",
             //"alphaUp",
             //"scaleUp_0",
-            "scaleUp_1"
+            //"scaleUp_1",
             //"scaleUp_2"
 	],
 	"DwBranch": [
-	    //"UnmatchedPUWeightDown01sigma/centralObjectWeight"
+	    //"UnmatchedPUWeightDown01sigma/centralObjectWeight",
             //"alphaDown",
             //"scaleDown_0",
-            "scaleDown_1"
+            //"scaleDown_1",
             //"scaleDown_2"
 	]
     },
@@ -386,7 +394,8 @@
 	],
 	"treename": "VBFTagDumper/trees/{sampleid}_13TeV_VBF",
 	//"intlumi": 2.60,
-	"intlumi": 6.26,
+	//"intlumi": 6.26,
+	"intlumi": 12.9,
 	"kfactor": 0
     },
     "labels": {
@@ -399,10 +408,9 @@
 	    //"No fudge factor",
 	    //"Correction factor",
             //"of 0.827 applied",
-	    //"JEC, JER and RMS",
+	    "JEC, JER and RMS",
 	    //"JEC, JER, RMS, PU",
 	    //"Alpha and Scale0-2",
-	    "JER only",
 	    "systematics included",
 	    //"Statistical errors only",
 	    //"JEC systematic only",

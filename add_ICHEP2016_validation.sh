@@ -18,16 +18,16 @@
 #cp plots/* ~/www/ICHEP16/ValidationRmsSystsWithMjj/
 #rm plots/*
 
-./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_leadEta --label normal-three
-./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_subleadEta --label normal-three
-./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_LeadJPt --label normal-three
-./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_SubJPt --label normal-three
-
-#./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_leadEta --label pdfs 
-#./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_subleadEta --label pdfs
-#./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_LeadJPt --label pdfs
-#./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/PUreweightingManySysts/ -v dijet_SubJPt --label pdfs
+./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_leadEta --label normal-three
+./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_subleadEta --label normal-three
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_leadEta --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_subleadEta --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_Scales.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_leadEta --label with-scales
+./plot -r plotcard/vbf_plotcard_80x_zee_Scales.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_subleadEta --label with-scales
+./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_leadEta --label full-pdfs 
+./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/SingleElectron/ -v dijet_subleadEta --label full-pdfs
 
 #cp plots/* ~/www/ICHEP16/ValidationWithPUsyst/
-cp plots/* ~/www/ICHEP16/ValidationManySysts/
+#cp plots/* ~/www/ICHEP16/ValidationManySysts/
+cp plots/* ~/www/ICHEP16/ValidationSingleElectron/
 rm plots/*
