@@ -611,6 +611,7 @@ def draw_instack(variable, label='VBF', select=''):
         tree       = samples[proc].get('_root_tree_')
         sample_cut = samples[proc].get('cut','')
         _cutflow_  = cutflow
+        _sample_weight_ = samples[proc].get('weight','1')
 
         if samples[proc].get('cut','') != '':
             _cutflow_ = cutflow[:-1] + '&&' +  samples[proc].get('cut','') + ')'
@@ -621,9 +622,10 @@ def draw_instack(variable, label='VBF', select=''):
             tree.Project(
                 'h_' + varname + variables[variable]['hist'],
                 formula,
-                _cutflow_.replace('weight','weight*%f*%f*%f' % ( treeinfo.get('kfactor',1.0),
+                _cutflow_.replace('weight','weight*%f*%f*%f*%s' % ( treeinfo.get('kfactor',1.0),
                                                                  treeinfo.get('lumi'   ,1.0),
-                                                                 samples[proc].get('kfactor',1.0)))
+                                                                 samples[proc].get('kfactor',1.0),
+                                                                 _sample_weight_))
                 )
         else:
             tree.Project(
@@ -641,9 +643,10 @@ def draw_instack(variable, label='VBF', select=''):
                 treeUp.Project(
                     'h_UpSys_' + sysname +'_'+ varname + variables[variable]['hist'],
                     formula,
-                    _cutflow_.replace('weight','weight*%f*%f*%f' % ( treeinfo.get('kfactor',1.0),
+                    _cutflow_.replace('weight','weight*%f*%f*%f*%s' % ( treeinfo.get('kfactor',1.0),
                                                                      treeinfo.get('lumi'   ,1.0),
-                                                                     samples[proc].get('kfactor',1.0)))
+                                                                     samples[proc].get('kfactor',1.0),
+                                                                     _sample_weight_))
                 )
                 histUp = ROOT.gDirectory.Get('h_UpSys_' + sysname +'_'+ varname )
                 histUp.SetDirectory(0)
@@ -660,9 +663,10 @@ def draw_instack(variable, label='VBF', select=''):
                 treeDw.Project(
                     'h_DwSys_' + sysname +'_'+ varname + variables[variable]['hist'],
                     formula,
-                    _cutflow_.replace('weight','weight*%f*%f*%f' % ( treeinfo.get('kfactor',1.0),
+                    _cutflow_.replace('weight','weight*%f*%f*%f*%s' % ( treeinfo.get('kfactor',1.0),
                                                                      treeinfo.get('lumi'   ,1.0),
-                                                                     samples[proc].get('kfactor',1.0)))
+                                                                     samples[proc].get('kfactor',1.0),
+                                                                     _sample_weight_))
                 )
                 histDw = ROOT.gDirectory.Get('h_DwSys_' + sysname +'_'+ varname )
                 histDw.SetDirectory(0)
@@ -673,17 +677,19 @@ def draw_instack(variable, label='VBF', select=''):
         # ======= weight systematics
         for sys in branchUpSys:
             if proc != 'Data' and samples[proc].get('dosysts',True):
-                print 'sys ::', sys, ' :: treeUp ::', tree, ' :: ', tree.GetEntries(), ' :: ', 'weight*%f*%f*%s*%f' % ( treeinfo.get('kfactor',1.0),
+                print 'sys ::', sys, ' :: treeUp ::', tree, ' :: ', tree.GetEntries(), ' :: ', 'weight*%f*%f*%s*%f*%s' % ( treeinfo.get('kfactor',1.0),
                                                                                                                         treeinfo.get('lumi'   ,1.0),
                                                                                                                         sys,
-                                                                                                                        samples[proc].get('kfactor',1.0))
+                                                                                                                        samples[proc].get('kfactor',1.0),
+                                                                                                                        _sample_weight_)
                 tree.Project(
                     'h_weight_UpSys_' + sysname +'_'+ varname + variables[variable]['hist'],
                     formula,
-                    _cutflow_.replace('weight','weight*%f*%f*%s*%f' % ( treeinfo.get('kfactor',1.0),
+                    _cutflow_.replace('weight','weight*%f*%f*%s*%f*%s' % ( treeinfo.get('kfactor',1.0),
                                                                         treeinfo.get('lumi'   ,1.0),
                                                                         sys,
-                                                                        samples[proc].get('kfactor',1.0)))
+                                                                        samples[proc].get('kfactor',1.0),
+                                                                        _sample_weight_))
                 )
                 histUp = ROOT.gDirectory.Get('h_weight_UpSys_' + sysname +'_'+ varname)
                 histUp.SetDirectory(0)
@@ -694,17 +700,19 @@ def draw_instack(variable, label='VBF', select=''):
 
         for sys in branchDwSys:
             if proc != 'Data' and samples[proc].get('dosysts',True):
-                print 'sys ::', sys, ' :: treeUp ::', tree, ' :: ', tree.GetEntries(), ' :: ', 'weight*%f*%f*%s*%f' % ( treeinfo.get('kfactor',1.0),
+                print 'sys ::', sys, ' :: treeUp ::', tree, ' :: ', tree.GetEntries(), ' :: ', 'weight*%f*%f*%s*%f*%s' % ( treeinfo.get('kfactor',1.0),
                                                                                                                         treeinfo.get('lumi'   ,1.0),
                                                                                                                         sys,
-                                                                                                                        samples[proc].get('kfactor',1.0))
+                                                                                                                        samples[proc].get('kfactor',1.0),
+                                                                                                                        _sample_weight_)
                 tree.Project(
                     'h_weight_DwSys_' + sysname +'_'+ varname + variables[variable]['hist'],
                     formula,
-                    _cutflow_.replace('weight','weight*%f*%f*%s*%f' % ( treeinfo.get('kfactor',1.0),
+                    _cutflow_.replace('weight','weight*%f*%f*%s*%f*%s' % ( treeinfo.get('kfactor',1.0),
                                                                         treeinfo.get('lumi'   ,1.0),
                                                                         sys,
-                                                                        samples[proc].get('kfactor',1.0)))
+                                                                        samples[proc].get('kfactor',1.0),
+                                                                        _sample_weight_))
                 )
                 histDw = ROOT.gDirectory.Get('h_weight_DwSys_' + sysname +'_'+ varname)
                 histDw.SetDirectory(0)
