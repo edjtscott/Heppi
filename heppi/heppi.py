@@ -635,7 +635,6 @@ def draw_instack(variable, label='VBF', select=''):
             )
         #=== systematics 
         for sys in treesUpSys:
-            
             if proc != 'Data' and samples[proc].get('dosysts',True):
                 sysname = sys.split('*')[1]
                 treeUp  = [x for x in samples[proc].get('_root_tree_sysUp_') if sysname in x.GetName()][0]
@@ -656,7 +655,6 @@ def draw_instack(variable, label='VBF', select=''):
                     histUpSys[sysname].Add(histUp)
         for sys in treesDwSys:
             if proc != 'Data' and samples[proc].get('dosysts',True):
-                #treeDw    = samples[proc].get('_root_tree_sysDw_')[0]
                 sysname   = sys.split('*')[1]
                 treeDw  = [x for x in samples[proc].get('_root_tree_sysDw_') if sysname in x.GetName()][0]
                 print 'sys ::', sys, ' :: treeUp ::', treeDw, ' :: ', treeDw.GetEntries()
