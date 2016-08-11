@@ -18,16 +18,26 @@
 #cp plots/* ~/www/ICHEP16/ValidationRmsSystsWithMjj/
 #rm plots/*
 
-./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label normal-three
-./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label normal-three
+#./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label normal-three
+#./plot -r plotcard/vbf_plotcard_80x_zee.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label normal-three
+#./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label normal-plusPU
+#./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label normal-plusPU
+#./plot -r plotcard/vbf_plotcard_80x_zee_Scales.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label with-scales
+#./plot -r plotcard/vbf_plotcard_80x_zee_Scales.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label with-scales
+#./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label full-pdfs 
+#./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label full-pdfs
+
 ./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label normal-plusPU
 ./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label normal-plusPU
-./plot -r plotcard/vbf_plotcard_80x_zee_Scales.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label with-scales
-./plot -r plotcard/vbf_plotcard_80x_zee_Scales.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label with-scales
-./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_leadEta --label full-pdfs 
-./plot -r plotcard/vbf_plotcard_80x_zee_IncPdfs.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_subleadEta --label full-pdfs
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_abs_dEta --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_Mjj --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_Zep --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_dipho_dphi_trunc --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_mva --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dipho_mva --label normal-plusPU
+./plot -r plotcard/vbf_plotcard_80x_zee_withPU.json -s /afs/cern.ch/work/e/escott/public/ValidationICHEP/RecommendedSingle/ -v dijet_dipho_MVA --label normal-plusPU
 
 #cp plots/* ~/www/ICHEP16/ValidationWithPUsyst/
 #cp plots/* ~/www/ICHEP16/ValidationManySysts/
-cp plots/* ~/www/ICHEP16/ValidationRecommendedSingle/
+cp plots/* ~/www/ICHEP16/ValidationRecommendedSingle/ForTheAN/
 rm plots/*
