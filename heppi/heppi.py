@@ -343,7 +343,7 @@ class scatter_opt(object):
         return string
 
 class instack ():
-    def __init__(self, plotcard, cutcard = '', sampledir = '{PWD}'):
+    def __init__(self, plotcard, cutcard = '', sampledir = '{PWD}',outdir="plots"):
         self.plotcard    = plotcard
         self.samples     = collections.OrderedDict()
         self.variables   = {}
@@ -359,6 +359,7 @@ class instack ():
         self.sampledir   = sampledir
         self.sig_root_tree  = ROOT.TChain('sig_data')
         self.bkg_root_tree  = ROOT.TChain('bkg_data')
+        self.outdir = outdir
     def set_samples_directory(self,directory = "{PWD}"):
         self.sampledir = directory
     def read_plotcard(self):
@@ -1170,7 +1171,7 @@ class instack ():
             histname = histname + '_norm'
 
         for form in settings.plot_formats :
-            c.SaveAs( 'plots/' + histname + '.' + form)
+            c.SaveAs( self.outdir + '/' + histname + '.' + form)
 
         variable.clear()
         # if len(self.systematics.keys())>0: self.options.label.pop()
@@ -1485,12 +1486,12 @@ class instack ():
         variable_x.root_legend.SetLineColorAlpha(0,0)
         variable_x.root_legend.SetShadowColor(0)
         variable_x.root_legend.Draw()
-        f = ROOT.TFile('plots/scatter/' + histname + ".root","recreate");
+        f = ROOT.TFile(self.outdir + '/scatter/' + histname + ".root","recreate");
         for form in settings.plot_formats:
             if make_profiles:
-                c.SaveAs('plots/scatter/' + histname + '_profile.' + form )
+                c.SaveAs(self.outdir + '/scatter/' + histname + '_profile.' + form )
             else:
-                c.SaveAs('plots/scatter/' + histname + '.' + form )
+                c.SaveAs(self.outdir + '/scatter/' + histname + '.' + form )
             if scatter_data!=None: scatter_data.Write()
             if scatter_bkg !=None: scatter_bkg.Write()
             if scatter_sig !=None: scatter_sig.Write()
