@@ -364,7 +364,7 @@ class instack ():
     def read_plotcard(self):
         _config_ = None
         with open(self.plotcard) as f:
-            _config_ = json.loads(jsmin(f.read()),object_pairs_hook=OrderedDict)
+            _config_ = json.loads(jsmin(f.read()))
         if self.cutcard != '':
             logger.info(' ---- cut card is specified ----')
             logger.info(' -- %20s ' % ( self.cutcard )    )
@@ -407,6 +407,7 @@ class instack ():
     def book_trees(self, make_sig_bkg_trees = False):
         _samples_ = []
         for proc,sample in self.samples.items():
+            print "SCZ",sample,sample.files
             chainName = ""
             if sample.tree == "":
                 chainName = str(self.options.treename).format(sampleid = sample.name)
@@ -419,10 +420,13 @@ class instack ():
                 for sam in sample.files:
                     _sam_ = sam
                     _tre_ = chainName
+                    print "SCZ3",_sam_,_tre_
                     if ':' in sam:
                         _sam_ = sam.split(':')[0]
                         _tre_ = sam.split(':')[1]
+                    print "SCZ4",_sam_,_tre_
                     for f in glob.glob( self.sampledir + '/*'+ _sam_ +'*.root'):
+                        print "Adding %s for sample %s" % (f + '/' + _tre_,_sam_)
                         chain.Add( f + '/' + _tre_ )
                         logger.debug("[a][%s] = [%s/%s]" % ( sample.name, f , _tre_ ) )
                 # preliminary systematics handling
@@ -443,10 +447,15 @@ class instack ():
             else:
                 _sam_ = sample.files
                 _tre_ = chainName
+                print "SCZ1",_sam_,_tre_
                 if ':' in _sam_:
                     _sam_ = sam.split(':')[0]
                     _tre_ = sam.split(':')[1]
+                print "SCZ2",_sam_,_tre_
+                if len(_sam_) == 0:
+                    raise Exception,"sample name has length 0"
                 for f in glob.glob( self.sampledir + '/*'+ _sam_ +'*.root'):
+                    print "Adding %s for sample %s" % (f + '/' + _tre_,_sam_)
                     chain.Add( f + '/' + _tre_ )
                     logger.debug("[b][%s] = [%s/%s]" % ( sample.name, f , _tre_ ) )
                 if 'background' in sample.label.lower()  :
@@ -840,6 +849,8 @@ class instack ():
         histname = ('stack_histogram_' +
                     variable.name + '_' + label + '_'
                     '')
+        print('check')
+        print(variable.name)
         variable.root_legend = None
 
         for proc in self.samples:
@@ -896,7 +907,9 @@ class instack ():
                             "%f" % sample.kfactor
                         ]
                     )
+                
                 )
+            
             elif sample.label == 'data':
                 sample.root_tree.Project(
                     'h_' + variable.name + variable.hist,
@@ -908,9 +921,35 @@ class instack ():
                 logger.error(' -- the label of the sample "%s" is not recognised by Heepi' % sample.name )
                 return
 
+            ROOT.gDirectory.ls()
+            print('checkcheck')
+            print(sample.root_tree)
+            print(variable.name)
+            print('checkcheck')
+            print('start check 2')
+            print('h_' + variable.name)
+            print('end check 2')
             hist = ROOT.gDirectory.Get('h_' + variable.name )
-            hist.SetDirectory(0)
-
+            #hist = sample.root_tree
+            print('start check 3')
+	    print(hist)
+            print('end check 3')
+            print('start check 4')
+            print(ROOT.gDirectory.ls())
+            print('end check 4')
+            print('start check 5')
+#            sample.root_tree.Print()
+            
+            print('end check 5')
+            #me
+            #histogram = hist.ReadObj()
+            #me
+            #histogram.SetDirectory(0)
+            try:
+                hist.SetDirectory(0)
+            except Exception:
+                raise Exception,"missing histogram for variable.name %s" % variable.name
+            
             if variable.norm and hist.Integral()!=0:
                 hist.Sumw2()
                 hist.Scale(1.0/hist.Integral())
@@ -1053,6 +1092,7 @@ class instack ():
         #
         c.cd()
         if self.options.ratioplot :
+            print ('option1')
             c.cd(2)
             (errorHist,systHist) = self.make_stat_progression(hstack.GetStack().Last(),self.systematics)
             ROOT.SetOwnership(errorHist,0)
@@ -1065,15 +1105,17 @@ class instack ():
             systHist.GetYaxis().CenterTitle(True)
             self.customizeHisto(errorHist)
             if settings.ratio_plot_grid :
+                print('checkratio1')
         	ROOT.gPad.SetGridy()
         	ROOT.gPad.SetGridx()
         	errorHist.Draw('E2')
             if len(self.systematics)!=0: systHist.Draw('E2,same')
             ratioHist = None
-
+            print('checkratio2')
             sig_and_bkg_ratio = []
 
             if hdata==None:
+                print('checkratio3')
                 ratioHist = hstack.GetStack().Last().Clone('_temp_')
                 ratioHist.Clear()
                 ratioHist.SetLineColorAlpha(0,0)
@@ -1093,6 +1135,7 @@ class instack ():
                         sig_and_bkg_ratio_.SetLineColor(sig.GetLineColor())
                         sig_and_bkg_ratio.append(sig_and_bkg_ratio_)
             else:
+                print('checkratio4')
                 ratioHist = self.makeRatio(hist1 = hdata, hist2 = hstack.GetStack().Last(), isdata = True)
                 ROOT.SetOwnership(ratioHist,0)
                 ratioHist.GetXaxis().SetTitle(_htmp_.GetXaxis().GetTitle())

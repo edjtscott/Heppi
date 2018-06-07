@@ -1,0 +1,796 @@
+{
+    "variables": {
+        "isGold": {
+            "hist": "(2,-0.5,1.5)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "isGold"
+        },
+	"dijet_jet1_pujid_mva" : {
+	    "hist" : "(40,-1,1)",
+            "cut"  : "",
+            "blind": "",
+            "log"  : true,
+            "norm" : false,
+            "title": "MVA_{pujid}(jet_{1})"
+	},
+	"dijet_jet2_pujid_mva" : {
+	    "hist" : "(40,-1,1)",
+            "cut"  : "",
+            "blind": "",
+            "log"  : true,
+            "norm" : false,
+            "title": "MVA_{pujid}(jet_{2})"
+	},
+	"dijet_LeadJPt": {
+            "hist": "(60,15,265)",
+            "cut": "dijet_LeadJPt>40",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "unit": "GeV",
+            "title": "p_{t}(jet_{1}) (GeV)"
+        },
+        "dijet_SubJPt": {
+            "hist": "(60,15,265)",
+            "cut": "dijet_SubJPt>30",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "unit": "GeV",
+            "title": "p_{t}(jet_{2}) (GeV)"
+        },
+        "dijet_leadEta": {
+            "hist": "(40,-5,5)",
+            "cut": "abs(dijet_leadEta)<2.5",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "#eta(jet_{1})"
+        },
+        "dijet_subleadEta": {
+            "hist": "(40,-5,5)",
+            "cut": "abs(dijet_subleadEta)<2.5",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "#eta(jet_{2})"
+        },
+        "dijet_jet1_RMS": {
+            "hist": "(30,0,0.15)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "RMS(jet_{1})"
+        },
+        "dijet_jet2_RMS": {
+            "hist": "(30,0,0.15)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "RMS(jet_{2})"
+        },
+        "normalisation:=1": {
+            "hist": "(1,1,2)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "for normalisation"
+        },
+        "dijet_Mjj": {
+            "hist": "(40,0,800)",
+            "cut": "dijet_Mjj>250",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "unit": "GeV",
+            "title": "m_{jj}"
+        },
+        "dijet_Zep": {
+            "hist": "(40,0,10)",
+            //"cut": "dijet_Zep<2.5",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "#eta^{*}"
+        },
+        "dijet_abs_dEta": {
+            "hist": "(20,0,10)",
+            //"cut": "dijet_abs_dEta>3",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "|#Delta#eta_{jj}|"
+        },
+        "dijet_dipho_dphi_trunc": {
+            "hist": "(30,0,3)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "#Delta#phi(jj,#gamma#gamma)_{trunc}"
+        },
+        "dipho_lead_ptoM": {
+            "hist": "(25,0,2)",
+            "cut": "dipho_lead_ptoM>(1/3.)",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "p_{t}^{#gamma_{1}}/m_{#gamma#gamma}"
+        },
+        "dipho_sublead_ptoM": {
+            "hist": "(25,0,2)",
+            "cut": "dipho_sublead_ptoM>(1/4.)",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "p_{t}^{#gamma_{2}}/m_{#gamma#gamma}"
+        },
+        "dipho_PToM": {
+            "hist": "(40,0,5)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "p_{t}^{#gamma#gamma}/m_{#gamma#gamma}"
+        },
+        "dipho_leadPt": {
+            "hist": "(40,0,200)",
+            "cut": "dipho_leadPt>40",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "p_{t}(#gamma_1)"
+        },
+        "dipho_subleadPt": {
+            "hist": "(40,0,200)",
+            //"cut": "dipho_subleadPt>25",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "p_{t}(#gamma_2)"
+        },
+        "dipho_mass": {
+            "hist" : "(40,80,100)",
+            "cut"  : "(dipho_mass>80 && dipho_mass<100)",
+            "log"  : false,
+            "norm" : false,
+            "unit" : "GeV",
+            "title": "m_{#gamma#gamma}"
+        },
+        "dijet_mva": {
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "unit": "",
+            "title": "BDT_{jj}"
+        },
+        "dipho_dijet_MVA": {
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "unit": "",
+            "title": "BDT_{comb.}"
+        },
+        "nvtx": {
+            "hist": "(40,0,40)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "N_{vtx}"
+        },
+        "dipho_lead_elveto": {
+            "hist": "(2,0,2)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "electron veto (#gamma_{1})"
+        },
+        "dijet_minDRJetPho": {
+            "hist": "(40,0,5)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "min#Delta{R}(j#gamma)"
+        },
+
+
+
+
+
+        "lead_pujid_mva_etabin1:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)<2.5) + (-999)*!(abs(dijet_leadEta)<2.5))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin1"
+        },
+        "lead_pujid_mva_etabin2:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) - (-999)*(!(abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) ))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin2"
+        },
+        "lead_pujid_mva_etabin3:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) - (-999)*(!(abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin3"
+        },
+        "lead_pujid_mva_etabin4:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) - (-999)*(!(abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin4"
+        },
+
+
+
+        "lead_pujid_mva_ptbin1:=(dijet_jet1_pujid_mva*(dijet_LeadJPt>20 && dijet_LeadJPt<30) - (-999)*(!(dijet_LeadJPt>20 && dijet_LeadJPt<30)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_ptbin1"
+        },
+        "lead_pujid_mva_ptbin2:=(dijet_jet1_pujid_mva*(dijet_LeadJPt>30 && dijet_LeadJPt<50) - (-999)*(!(dijet_LeadJPt>30 && dijet_LeadJPt<50)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_ptbin2"
+        },
+        "lead_pujid_mva_ptbin3:=(dijet_jet1_pujid_mva*(dijet_LeadJPt>50 && dijet_LeadJPt<100) - (-999)*(!(dijet_LeadJPt>50 && dijet_LeadJPt<100)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_ptbin3"
+        },
+        "lead_pujid_mva_ptbin4:=(dijet_jet1_pujid_mva*(dijet_LeadJPt>100) - (-999)*(!(dijet_LeadJPt>100)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_ptbin4"
+        },
+
+
+
+
+
+        "lead_pujid_mva_etabin1_ptbin1:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>20 && dijet_LeadJPt<30)) + (-999)*!(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>20 && dijet_LeadJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin1_ptbin1"
+        },
+        "lead_pujid_mva_etabin1_ptbin2:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>30 && dijet_LeadJPt<50)) + (-999)*!(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>30 && dijet_LeadJPt<50)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin1_ptbin2"
+        },
+        "lead_pujid_mva_etabin1_ptbin3:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>50 && dijet_LeadJPt<100)) + (-999)*!(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>50 && dijet_LeadJPt<100)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin1_ptbin3"
+        },
+        "lead_pujid_mva_etabin1_ptbin4:=(dijet_jet1_pujid_mva*(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>100)) + (-999)*!(abs(dijet_leadEta)<2.5 && (dijet_LeadJPt>100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin1_ptbin4"
+        },
+
+
+
+        "lead_pujid_mva_etabin2_ptbin1:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>20 && dijet_LeadJPt<30)) + (-999)*!((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>20 && dijet_LeadJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin2_ptbin1"
+        },
+        "lead_pujid_mva_etabin2_ptbin2:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>30 && dijet_LeadJPt<50)) + (-999)*!((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>30 && dijet_LeadJPt<50)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin2_ptbin2"
+        },
+        "lead_pujid_mva_etabin2_ptbin3:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>50 && dijet_LeadJPt<100)) + (-999)*!((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>50 && dijet_LeadJPt<100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin2_ptbin3"
+        },
+        "lead_pujid_mva_etabin2_ptbin4:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>100)) + (-999)*!((abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75) && (dijet_LeadJPt>100)))":{
+            "hist": "(90,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin2_ptbin4"
+        },
+
+
+
+        "lead_pujid_mva_etabin3_ptbin1:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>20 && dijet_LeadJPt<30)) + (-999)*!((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>20 && dijet_LeadJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin3_ptbin1"
+        },
+        "lead_pujid_mva_etabin3_ptbin2:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>30 && dijet_LeadJPt<50)) + (-999)*!((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>30 && dijet_LeadJPt<50)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin3_ptbin2"
+        },
+        "lead_pujid_mva_etabin3_ptbin3:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>50 && dijet_LeadJPt<100)) + (-999)*!((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>50 && dijet_LeadJPt<100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin3_ptbin3"
+        },
+        "lead_pujid_mva_etabin3_ptbin4:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>100)) + (-999)*!((abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0) && (dijet_LeadJPt>100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin3_ptbin4"
+        },
+
+
+
+
+        "lead_pujid_mva_etabin4_ptbin1:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>20 && dijet_LeadJPt<30)) + (-999)*!((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>20 && dijet_LeadJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin4_ptbin1"
+        },
+        "lead_pujid_mva_etabin4_ptbin2:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>30 && dijet_LeadJPt<50)) + (-999)*!((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>30 && dijet_LeadJPt<50)))":{
+            "hist": "(100,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin4_ptbin2"
+        },
+        "lead_pujid_mva_etabin4_ptbin3:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>50 && dijet_LeadJPt<100)) + (-999)*!((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>50 && dijet_LeadJPt<100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin4_ptbin3"
+        },
+        "lead_pujid_mva_etabin4_ptbin4:=(dijet_jet1_pujid_mva*((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>100)) + (-999)*!((abs(dijet_leadEta)>3.0 && abs(dijet_leadEta)<5.0) && (dijet_LeadJPt>100)))":{
+            "hist": "(100,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "lead_jet_pujid_mva_etabin4_ptbin4"
+        },
+
+
+
+
+
+
+
+
+
+        "sublead_pujid_mva_etabin1:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)<2.5) + (-999)*!(abs(dijet_subleadEta)<2.5))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin1"
+        },
+        "sublead_pujid_mva_etabin2:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) - (-999)*(!(abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) ))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin2"
+        },
+        "sublead_pujid_mva_etabin3:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) - (-999)*(!(abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin3"
+        },
+        "sublead_pujid_mva_etabin4:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) - (-999)*(!(abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin4"
+        },
+
+
+
+        "sublead_pujid_mva_ptbin1:=(dijet_jet2_pujid_mva*(dijet_SubJPt>20 && dijet_SubJPt<30) - (-999)*(!(dijet_SubJPt>20 && dijet_SubJPt<30)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_ptbin1"
+        },
+        "sublead_pujid_mva_ptbin2:=(dijet_jet2_pujid_mva*(dijet_SubJPt>30 && dijet_SubJPt<50) - (-999)*(!(dijet_SubJPt>30 && dijet_SubJPt<50)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_ptbin2"
+        },
+        "sublead_pujid_mva_ptbin3:=(dijet_jet2_pujid_mva*(dijet_SubJPt>50 && dijet_SubJPt<100) - (-999)*(!(dijet_SubJPt>50 && dijet_SubJPt<100)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_ptbin3"
+        },
+        "sublead_pujid_mva_ptbin4:=(dijet_jet2_pujid_mva*(dijet_SubJPt>100) - (-999)*(!(dijet_SubJPt>100)))":{
+            "hist": "(40,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_ptbin4"
+        },
+
+
+
+
+
+        "sublead_pujid_mva_etabin1_ptbin1:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>20 && dijet_SubJPt<30)) + (-999)*!(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>20 && dijet_SubJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin1_ptbin1"
+        },
+        "sublead_pujid_mva_etabin1_ptbin2:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>30 && dijet_SubJPt<50)) + (-999)*!(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>30 && dijet_SubJPt<50)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin1_ptbin2"
+        },
+        "sublead_pujid_mva_etabin1_ptbin3:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>50 && dijet_SubJPt<100)) + (-999)*!(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>50 && dijet_SubJPt<100)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin1_ptbin3"
+        },
+        "sublead_pujid_mva_etabin1_ptbin4:=(dijet_jet2_pujid_mva*(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>100)) + (-999)*!(abs(dijet_subleadEta)<2.5 && (dijet_SubJPt>100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin1_ptbin4"
+        },
+
+
+
+        "sublead_pujid_mva_etabin2_ptbin1:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>20 && dijet_SubJPt<30)) + (-999)*!((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>20 && dijet_SubJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin2_ptbin1"
+        },
+        "sublead_pujid_mva_etabin2_ptbin2:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>30 && dijet_SubJPt<50)) + (-999)*!((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>30 && dijet_SubJPt<50)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin2_ptbin2"
+        },
+        "sublead_pujid_mva_etabin2_ptbin3:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>50 && dijet_SubJPt<100)) + (-999)*!((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>50 && dijet_SubJPt<100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin2_ptbin3"
+        },
+        "sublead_pujid_mva_etabin2_ptbin4:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>100)) + (-999)*!((abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75) && (dijet_SubJPt>100)))":{
+            "hist": "(90,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin2_ptbin4"
+        },
+
+
+
+        "sublead_pujid_mva_etabin3_ptbin1:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>20 && dijet_SubJPt<30)) + (-999)*!((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>20 && dijet_SubJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin3_ptbin1"
+        },
+        "sublead_pujid_mva_etabin3_ptbin2:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>30 && dijet_SubJPt<50)) + (-999)*!((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>30 && dijet_SubJPt<50)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin3_ptbin2"
+        },
+        "sublead_pujid_mva_etabin3_ptbin3:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>50 && dijet_SubJPt<100)) + (-999)*!((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>50 && dijet_SubJPt<100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin3_ptbin3"
+        },
+        "sublead_pujid_mva_etabin3_ptbin4:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>100)) + (-999)*!((abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0) && (dijet_SubJPt>100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin3_ptbin4"
+        },
+
+
+
+
+        "sublead_pujid_mva_etabin4_ptbin1:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>20 && dijet_SubJPt<30)) + (-999)*!((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>20 && dijet_SubJPt<30)))":{
+            "hist": "(200,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin4_ptbin1"
+        },
+        "sublead_pujid_mva_etabin4_ptbin2:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>30 && dijet_SubJPt<50)) + (-999)*!((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>30 && dijet_SubJPt<50)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin4_ptbin2"
+        },
+        "sublead_pujid_mva_etabin4_ptbin3:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>50 && dijet_SubJPt<100)) + (-999)*!((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>50 && dijet_SubJPt<100)))":{
+            "hist": "(80,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin4_ptbin3"
+        },
+        "sublead_pujid_mva_etabin4_ptbin4:=(dijet_jet2_pujid_mva*((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>100)) + (-999)*!((abs(dijet_subleadEta)>3.0 && abs(dijet_subleadEta)<5.0) && (dijet_SubJPt>100)))":{
+            "hist": "(100,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "sublead_jet_pujid_mva_etabin4_ptbin4"
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        "dijet_dphi": {
+            "hist": "(40,0,3.14)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "#Delta#phi(jj)"
+        },
+        "centrality:=exp(-4*(dijet_Zep*dijet_Zep)/(dijet_abs_dEta*dijet_abs_dEta))": {
+            "hist": "(40,0,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "C_{#gamma#gamma}"
+        },
+        "dipho_sublead_elveto": {
+            "hist": "(2,0,2)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "electron veto (#gamma_{2})"
+        }
+    },
+    "scatter": {
+        "xlist": ["dipho_mass"],
+        "ylist": [
+            "dijet_Mjj",
+            "dipho_mass",
+            "dijet_abs_dEta",
+            "nvtx",
+            "dijet_Zep",
+            "dijet_dipho_dphi_trunc",
+            "dipho_PToM",
+            "dipho_lead_ptoM",
+            "dijet_LeadJPt",
+            "dijet_SubJPt",
+            "dipho_lead_ptoM",
+            "dipho_sublead_ptoM"
+        ],
+        "profile": true,
+        "scatter": true,
+        "logz": false,
+        "normz": true
+    },
+    "processes": {
+        "Zee": {
+            "color": 130,
+            "order": 0,
+            "files" : "DY",
+            "title": "All",
+            "tree" : "DY",
+            "cut"  : "",
+            "label": "background"
+          },
+        "Zee_matched": {
+            "color": 122,
+            "order": 1,
+            "files" : "DY",
+            "title": "both matched",
+            "tree" : "DY",
+            "cut"  : "(dijet_jet1_match==1 && dijet_jet2_match==1)",
+            "label": "spectator"
+        },
+        "Zee_fakes": {
+            "color": 132,
+            "order": 2,
+            "files" : "DY",
+            "title": "both fake",
+            "tree" : "DY",
+            "cut"  : "(dijet_jet1_match==0 && dijet_jet2_match==0)",
+            "label": "spectator"
+        },
+        "Zee_fake_jet1": {
+            "color": 123,
+            "order": 3,
+            "files": "DY",
+            "title": "jet_{1} fake",
+            "tree": "DY",
+            "cut": "(dijet_jet1_match==0 && dijet_jet2_match==1)",
+            "label": "spectator"
+        },
+        "Zee_fake_jet2": {
+            "color": 121,
+            "order": 4,
+            "files": "DY",
+            "title": "jet_{2} fake",
+            "tree": "DY",
+            "cut": "(dijet_jet1_match==1 && dijet_jet2_match==0)",
+            "label": "spectator"
+        },
+        "Data": {
+            "tree": "Data",
+            "color": 1,
+            "order": 2,
+            "files": "SingleElectron",
+            "cut": "",
+            "title": "data",
+            "label": "data"
+        }
+    },
+    "systematics": {
+        "JEC": {
+            "up_tree"   : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JECUp01sigma",
+            "down_tree" : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JECDown01sigma"
+        },
+        "JER": {
+            "up_tree"   : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JERUp01sigma",
+            "down_tree" : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JERDown01sigma"
+        }
+    },
+    "options": {
+        "label": [
+            "VBF preselection",
+            "80 < m_{ee} < 100 GeV"
+        ],
+        "treename": "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet",
+        "intlumi": 41.86,
+        //"kfactor": 0.762,
+        "kfactor": 0.6964,
+        //"ratio_range": [0.0,2.1],
+        "ratio_range": [0,2.1],
+        "ratio_type" : "centred",
+        "ratioplot" : true,
+        "categories" : [
+            {
+                "name":"inclusive" ,
+                "cut":"abs(weight)<=1",
+                "label":""
+            }
+        ]
+    }
+}
