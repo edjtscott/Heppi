@@ -23,6 +23,7 @@ except ImportError:
 import  glob, json, re, logging, collections, math, parser
 from    collections        import OrderedDict
 import  settings
+from os import system, path #FIXME
 
 logging.basicConfig(format=colored('%(levelname)s:',attrs = ['bold'])
                     + colored('%(name)s:','blue') + ' %(message)s')
@@ -62,7 +63,9 @@ class utils:
                 stmp = cut.split('>')
                 if len(stmp) == 1:
                     stmp = cut.split('<')
-                cut = eval(parser.expr(stmp[1]).compile())
+                print 'ED DEBUG stmp %s'%stmp
+                #cut = eval(parser.expr(stmp[1]).compile()) #ED DEBUG
+                cut = float(stmp[1])
                 line = ROOT.TLine()
                 line.SetLineColor(settings.cut_line_color)
                 line.SetLineStyle(settings.cut_line_style)
@@ -360,6 +363,8 @@ class instack ():
         self.sig_root_tree  = ROOT.TChain('sig_data')
         self.bkg_root_tree  = ROOT.TChain('bkg_data')
         self.outdir = outdir
+        if self.outdir.endswith('/'): self.outdir = self.outdir[:-1]
+        if not path.isdir(self.outdir): system('mkdir -p %s'%self.outdir)
     def set_samples_directory(self,directory = "{PWD}"):
         self.sampledir = directory
     def read_plotcard(self):
@@ -635,10 +640,19 @@ class instack ():
                     for key,syst in systematics.items():
                         up_diff   = (syst.up_histo.GetBinContent  (ibin)- y)/y
                         dw_diff   = (syst.down_histo.GetBinContent(ibin)- y)/y
+                        #FIXME ed changing systematics treatment
+                        #if( up_diff > 0 ):
+                        #    up_err_sum2  += up_diff*up_diff
                         if( up_diff > 0 ):
                             up_err_sum2  += up_diff*up_diff
+                        else:
+                            dw_err_sum2  += up_diff*up_diff
+                        #if( dw_diff < 0 ):
+                        #    dw_err_sum2  += dw_diff*dw_diff
                         if( dw_diff < 0 ):
                             dw_err_sum2  += dw_diff*dw_diff
+                        else:
+                            up_err_sum2  += dw_diff*dw_diff
                 up_error = math.sqrt(up_err_sum2)
                 dw_error = math.sqrt(dw_err_sum2)
                 band_max   = 1 + up_error
@@ -680,10 +694,19 @@ class instack ():
                 for key, syst in systematics.items():
                     up_diff   = syst.up_histo.GetBinContent(ibin)   - y
                     dw_diff   = syst.down_histo.GetBinContent(ibin) - y
-                    if up_diff > 0 :
-                        up_err_sum2 += up_diff*up_diff
-                    if dw_diff < 0 :
-                        dw_err_sum2 += dw_diff*dw_diff
+                    #FIXME ed changing error handling (once again......)
+                    #if up_diff > 0 :
+                    #    up_err_sum2 += up_diff*up_diff
+                    if( up_diff > 0 ):
+                        up_err_sum2  += up_diff*up_diff
+                    else:
+                        dw_err_sum2  += up_diff*up_diff
+                    #if( dw_diff < 0 ):
+                    #    dw_err_sum2  += dw_diff*dw_diff
+                    if( dw_diff < 0 ):
+                        dw_err_sum2  += dw_diff*dw_diff
+                    else:
+                        up_err_sum2  += dw_diff*dw_diff
                 up_error = math.sqrt(up_err_sum2)
                 dw_error = math.sqrt(dw_err_sum2)
 
@@ -893,11 +916,25 @@ class instack ():
                           Percentage(),'  ' ,Bar('>'), ' ', ETA()], term_width=100)
         for proc,sample in bar(self.samples.items()):
             _cutflow_ = variable.root_cutflow
+            print('ED DEBUG initial cutflow is \n%s'%_cutflow_)
             if len(sample.cut) != 0:
-                _cutflow_ = '&&'.join([variable.root_cutflow[:-1],sample.cut+')'])
+                #_cutflow_ = '&&'.join([variable.root_cutflow[:-1],sample.cut+')'])
+                _cutflow_ = '*('.join([variable.root_cutflow,sample.cut+')']) #FIXME ED DEBUG
+            print('ED DEBUG now cutflow is \n%s'%_cutflow_)
             if len(variable.blind) != 0 and sample.label == 'data':
                 _cutflow_ = '&&'.join([variable.root_cutflow[:-1],variable.blind+')'])
+            print('ED DEBUG now cutflow is \n%s'%_cutflow_)
             if sample.label != 'data':
+                print('ED DEBUG starting projection for proc %s sample %s'%(proc,sample))
+                print('ED DEBUG variable formula is %s'%variable.formula)
+                tempStr = '*'.join(
+                                  [   _cutflow_,
+                                      "%f" % self.options.kfactor,
+                                      "%f" % self.options.intlumi,
+                                      "%f" % sample.kfactor
+                                  ]
+                              )
+                print('ED DEBUG full cutflow is \n%s'%tempStr)
                 sample.root_tree.Project(
                     'h_' + variable.name + variable.hist,
                     variable.formula,
@@ -910,12 +947,14 @@ class instack ():
                     )
                 
                 )
+                print('ED DEBUG done projection for proc %s sample %s'%(proc,sample))
             
             elif sample.label == 'data':
                 sample.root_tree.Project(
                     'h_' + variable.name + variable.hist,
                     variable.formula,
-                    _cutflow_
+                    _cutflow_.replace('weight','1.') #ED FIXME FIXME
+                    #_cutflow_
                 )
 
             else:
@@ -955,6 +994,7 @@ class instack ():
                 hist.Sumw2()
                 hist.Scale(1.0/hist.Integral())
             if hist.Integral() == 0 : logger.warning(' The Integral of the histogram is null, please check this variable: %s' % varkey)
+            else: print 'integral of this hist is %1.3f'%hist.Integral()
             if 'background' in sample.label.lower():
                 for key,syst in sample.systematics.items() :
                     for _sys_flip_ in ['up','down']:
@@ -1054,6 +1094,14 @@ class instack ():
         self.customizeHisto(_htmp_, self.options.ratioplot)
         _htmp_.Draw('hist')
         hstack.Draw('hist,same')
+        print 'ED DEBUG hstack'
+        print hstack
+        print 'ED DEBUG hstack.GetStack()'
+        print hstack.GetStack()
+        print 'ED DEBUG hstack.GetStack().Last()'
+        print hstack.GetStack().Last()
+        print 'ED DEBUG systematics'
+        print self.systematics
         (herrstat, herrsyst) = self.draw_error_band(hstack.GetStack().Last(),self.systematics)
         herrstat.Draw('E2,same')
         if len(self.systematics)!=0:herrsyst.Draw('E2,same')
@@ -1089,7 +1137,8 @@ class instack ():
         # if (self.systematics.keys())>0 : self.options.label.append('+'.join(self.systematics.keys()))
         utils.draw_labels(self.options.label)
         # if (self.systematics.keys())>0 : self.options.label.pop()
-        utils.draw_cms_headlabel( label_left = '', label_right='#sqrt{s} = 13 TeV, L = %1.2f fb^{-1}' % self.options.intlumi )
+        #utils.draw_cms_headlabel( label_left = '', label_right='#sqrt{s} = 13 TeV, L = %1.2f fb^{-1}' % self.options.intlumi )
+        utils.draw_cms_headlabel( label_right='#sqrt{s} = 13 TeV, L = %1.2f fb^{-1}' % self.options.intlumi )
         #
         c.cd()
         if self.options.ratioplot :
