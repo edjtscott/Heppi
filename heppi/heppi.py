@@ -105,7 +105,7 @@ class utils:
                            (ystart - shift - ROOT.gStyle.GetPadTopMargin()),s)
             shift = shift + settings.label_shift
     @staticmethod
-    def draw_cms_headlabel(label_left  ='#scale[1.2]{#bf{CMS}} #it{Preliminary}',
+    def draw_cms_headlabel(label_left  ='',#'#scale[1.2]{#bf{CMS}} #it{Preliminary}',
                            label_right ='#sqrt{s} = 13 TeV, L = 2.56 fb^{-1}'):
         tex_left  = ROOT.TLatex()
         tex_left.SetTextAlign (11);
@@ -120,7 +120,7 @@ class utils:
         tex_right.DrawLatexNDC(1-0.05,
                                1.01 - ROOT.gStyle.GetPadTopMargin(),label_right)
     @staticmethod
-    def scatter_cms_headlabel(label_left  ='#scale[1.2]{#bf{CMS}} #it{Preliminary}',
+    def scatter_cms_headlabel(label_left  ='',#'#scale[1.2]{#bf{CMS}} #it{Preliminary}',
                               label_right ='#sqrt{s} = 13 TeV, L = 2.56 fb^{-1}'):
         tex_left  = ROOT.TLatex()
         tex_left.SetTextAlign (11);
@@ -953,8 +953,8 @@ class instack ():
                 sample.root_tree.Project(
                     'h_' + variable.name + variable.hist,
                     variable.formula,
-                    _cutflow_.replace('weight','1.') #ED FIXME FIXME
-                    #_cutflow_
+                    #_cutflow_.replace('weight','1.') #ED FIXME FIXME
+                    _cutflow_
                 )
 
             else:
@@ -1084,12 +1084,12 @@ class instack ():
                 _ymin_ = (0.01 - 0.003) if _ymin_ <= 0 else _ymin_
                 _ymax_ = hstack.GetMaximum()*1000
 
-            _htmp_.GetYaxis().SetRangeUser(_ymin_,_ymax_)
+            _htmp_.GetYaxis().SetRangeUser(_ymin_,_ymax_) #FIXME
             ROOT.gPad.SetLogy()
         else:
             _ymin_ = 0
             _ymax_ = _ymax_ + _ymax_ * 0.5
-            _htmp_.GetYaxis().SetRangeUser(_ymin_,_ymax_)
+            _htmp_.GetYaxis().SetRangeUser(_ymin_,_ymax_) #FIXME
 
         self.customizeHisto(_htmp_, self.options.ratioplot)
         _htmp_.Draw('hist')

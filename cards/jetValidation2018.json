@@ -1,0 +1,192 @@
+{
+    "variables": {
+        "dipho_mass": {
+            "hist": "(50,50,130)",
+            "cut": " dipho_mass>80 && dipho_mass<100",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "m_{ee}"
+        },
+        "dipho_leadIDMVA": {
+            "hist": "(50,-1,1)",
+            "cut": "dipho_leadIDMVA>-0.2",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Lead IDMVA"
+        },
+        "dipho_subleadIDMVA": {
+            "hist": "(50,-1,1)",
+            "cut": "dipho_subleadIDMVA>-0.2",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Sublead IDMVA"
+        },
+        "dipho_lead_ptoM": {
+            "hist": "(50,0,1)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Lead p_{T}/m_{#gamma#gamma}"
+        },
+        "dipho_leadPt": {
+            "hist": "(50,0,200)",
+            "cut": "dipho_leadPt>40",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Lead p_{T}"
+        },
+        "dipho_sublead_ptoM": {
+            "hist": "(50,0,1)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Sublead p_{T}/m_{#gamma#gamma}"
+        },
+        "dipho_subleadPt": {
+            "hist": "(50,0,200)",
+            //"cut": "",
+            "cut": "dipho_leadPt>30",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Sublead p_{T}"
+        },
+        "dijet_Mjj": {
+            "hist": "(50,0,800)",
+            "cut": "",
+            //"cut": "dijet_Mjj>250",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "m_{jj}"
+        },
+        "dijet_LeadJPt": {
+            "hist": "(50,0,200)",
+            "cut": " (dijet_LeadJPt > 40) ",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Lead jet p_{T}"
+        },
+        "dijet_SubJPt": {
+            "hist": "(50,0,200)",
+            //"cut": "",
+            "cut": " (dijet_SubJPt > 30) ",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Sublead jet p_{T}"
+        },
+        "dijet_leadEta": {
+            "hist": "(50,-5,5)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Lead jet #eta"
+        },
+        "dijet_subleadEta": {
+            "hist": "(50,-5,5)",
+            "cut": "",
+            "blind": "",
+            "log": false,
+            "norm": false,
+            "title": "Sublead jet #eta"
+        },
+        "dijet_jet1_pujid_mva": {
+            "hist": "(50,-1,1)",
+            "cut": "( (dijet_LeadJPt>30 && dijet_LeadJPt<50 && abs(dijet_leadEta)<2.5 && dijet_jet1_pujid_mva>0.86) || (dijet_LeadJPt>30 && dijet_LeadJPt<50 && abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75 && dijet_jet1_pujid_mva>-0.1) || (dijet_LeadJPt>30 && dijet_LeadJPt<50 && abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0 && dijet_jet1_pujid_mva>-0.05) || (dijet_LeadJPt>30 && dijet_LeadJPt<50 && abs(dijet_leadEta)>3.0 && dijet_jet1_pujid_mva>-0.01) || (dijet_LeadJPt>50 && dijet_LeadJPt<100 && abs(dijet_leadEta)<2.5 && dijet_jet1_pujid_mva>0.95) || (dijet_LeadJPt>50 && dijet_LeadJPt<100 && abs(dijet_leadEta)>2.5 && abs(dijet_leadEta)<2.75 && dijet_jet1_pujid_mva>0.28) || (dijet_LeadJPt>50 && dijet_LeadJPt<100 && abs(dijet_leadEta)>2.75 && abs(dijet_leadEta)<3.0 && dijet_jet1_pujid_mva>0.31) || (dijet_LeadJPt>50 && dijet_LeadJPt<100 && abs(dijet_leadEta)>3.0 && dijet_jet1_pujid_mva>0.28) || (dijet_LeadJPt>100) )",
+            //"cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "Lead jet PUJID"
+        },
+        "dijet_jet2_pujid_mva": {
+            "hist": "(50,-1,1)",
+            "cut": "( (dijet_SubJPt>30 && dijet_SubJPt<50 && abs(dijet_subleadEta)<2.5 && dijet_jet2_pujid_mva>0.86) || (dijet_SubJPt>30 && dijet_SubJPt<50 && abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75 && dijet_jet2_pujid_mva>-0.1) || (dijet_SubJPt>30 && dijet_SubJPt<50 && abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0 && dijet_jet2_pujid_mva>-0.05) || (dijet_SubJPt>30 && dijet_SubJPt<50 && abs(dijet_subleadEta)>3.0 && dijet_jet2_pujid_mva>-0.01) || (dijet_SubJPt>50 && dijet_SubJPt<100 && abs(dijet_subleadEta)<2.5 && dijet_jet2_pujid_mva>0.95) || (dijet_SubJPt>50 && dijet_SubJPt<100 && abs(dijet_subleadEta)>2.5 && abs(dijet_subleadEta)<2.75 && dijet_jet2_pujid_mva>0.28) || (dijet_SubJPt>50 && dijet_SubJPt<100 && abs(dijet_subleadEta)>2.75 && abs(dijet_subleadEta)<3.0 && dijet_jet2_pujid_mva>0.31) || (dijet_SubJPt>50 && dijet_SubJPt<100 && abs(dijet_subleadEta)>3.0 && dijet_jet2_pujid_mva>0.28) || (dijet_SubJPt>100) )",
+            //"cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "Sublead jet PUJID"
+        },
+        "dijet_jet1_QGL": {
+            "hist": "(50,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "Lead jet QGL"
+        },
+        "dijet_jet2_QGL": {
+            "hist": "(50,-1,1)",
+            "cut": "",
+            "blind": "",
+            "log": true,
+            "norm": false,
+            "title": "Sublead jet QGL"
+        }
+    },
+    "processes": {
+        "zee": {
+            "color": 417,
+            "order": 0,
+            "files" : "DY",
+            "title": "DY aMC@NLO",
+            "tree" : "Zee",
+            "cut": "",
+            "label": "background"
+          },
+        "data": {
+            "tree": "Data",
+            "color": 1,
+            "order": 3,
+            "files": "Data",
+            "cut": "",
+            "title": "data",
+            "label": "data"
+        }
+    },
+    "systematics": {
+        "JEC": {
+            "up_tree"   : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JECUp01sigma",
+            "down_tree" : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JECDown01sigma"
+        },
+        "JER": {
+            "up_tree"   : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JERUp01sigma",
+            "down_tree" : "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet_JERDown01sigma"
+        }
+    },
+    "options": {
+        "label": [
+            "Z#rightarrow ee events",
+            "80 < m_{ee} < 100 GeV",
+            "p_{T}^{e_{1}} > 40 GeV",
+            "VBF preselection"
+        ],
+        "treename": "vbfTagDumper/trees/{sampleid}_13TeV_VBFDiJet",
+        "intlumi": 59.7,
+        //"kfactor": 0.9, // ntuple tight pujid, no mjj cut
+        //"kfactor": 0.7295, // no pujid, mjj cut
+        //"kfactor": 0.784, // no pujid, no mjj cut
+        //"kfactor": 0.86, // local tight pujid, mjj cut
+        "kfactor": 0.88565, // local tight pujid, no mjj cut
+        "ratio_range": [0,2.1],
+        "ratio_type" : "centred",
+        "ratioplot" : true,
+        "categories" : [
+            {
+                "name":"inclusive",
+                "cut":"",
+                "label":""
+            }
+        ]
+    }
+}

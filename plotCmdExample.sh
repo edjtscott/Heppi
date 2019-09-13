@@ -1,0 +1,14 @@
+./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dijet_leadEta
+./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dijet_subleadEta
+./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dijet_LeadJPt
+./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dijet_SubJPt
+./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dijet_Mjj
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dijet_jet1_QGL
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dijet_jet2_QGL
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dipho_mass
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dipho_leadIDMVA
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dipho_subleadIDMVA
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dipho_lead_ptoM
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dipho_leadPt
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dipho_sublead_ptoM
+#./heppi-draw -p cards/jetValidation2018.json -o validation2018 -s /eos/home-e/escott/Stage1STXS/JetValidation/Pass1 -v dipho_subleadPt
