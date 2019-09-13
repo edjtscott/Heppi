@@ -30,16 +30,16 @@ samples.
 Quickstart guide from Ed
 ------------
 * Setup Heppi as follows:
-  .. code-block::
-     cmsrel CMSSW_10_5_0
-     cd CMSSW_10_5_0/src
-     cmsenv
-     git clone -b betterErrors @github.com:edjtscott/Heppi.git
-     cd Heppi
+  ::
+    cmsrel CMSSW_10_5_0
+    cd CMSSW_10_5_0/src
+    cmsenv
+    git clone -b betterErrors @github.com:edjtscott/Heppi.git
+    cd Heppi
 
 * example plotcard in ``cards/jetValidation2018.json`` 
 * example commands in ``examplePlotCmd.sh``
-* hopefully these are sufficiently self-explanatory to create your own versions :thumbs_up:
+* hopefully these are sufficiently self-explanatory to create your own versions
 
 installation
 ------------
