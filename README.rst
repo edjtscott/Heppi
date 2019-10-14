@@ -34,7 +34,7 @@ Quickstart guide from Ed
     cmsrel CMSSW_10_5_0
     cd CMSSW_10_5_0/src
     cmsenv
-    git clone -b betterErrors @github.com:edjtscott/Heppi.git
+    git clone -b betterErrors git@github.com:edjtscott/Heppi.git
     cd Heppi
 
 * example plotcard in ``cards/jetValidation2018.json`` 
